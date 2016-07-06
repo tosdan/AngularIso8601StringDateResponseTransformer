@@ -25,7 +25,7 @@
 
     function convertStringDateToDate(node, value, key, path, depth) {
         var match;
-        if (typeof value === "string" && (match = value.match(regexIso8601))) {
+        if (typeof value === "string" && value.length > 19 && (match = value.match(regexIso8601))) {
             var milliseconds = Date.parse(match[0])
             if (!isNaN(milliseconds)) {
                 node[key] = new Date(milliseconds);
